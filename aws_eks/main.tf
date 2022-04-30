@@ -53,7 +53,8 @@ module "eks_node_group" {
   min_size                           = 1
   max_size                           = 5
   desired_size                       = 2
-  cluster_name                       = module.eks_cluster.eks_cluster_id
+  #cluster_name                       = module.eks_cluster.eks_cluster_id
+  cluster_name                       = data.terraform_remote_state.remote.outputs.eks_cluster_id
 
   # Enable the Kubernetes cluster auto-scaler to find the auto-scaling group
   cluster_autoscaler_enabled = true
